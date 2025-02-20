@@ -1,0 +1,90 @@
+1. Total de pedidos por cliente
+Liste o nome dos clientes, o número total de pedidos realizados por cada um e o valor total desses pedidos.
+
+Tabelas: customers, orders, order_details.
+Funções: COUNT, SUM.
+Dica:
+
+Relacione customers com orders usando customer_id.
+Relacione orders com order_details usando order_id.
+2. Produtos mais vendidos por categoria
+Encontre os produtos mais vendidos em cada categoria (baseado na quantidade total pedida).
+
+Tabelas: categories, products, order_details.
+Funções: SUM, MAX.
+Dica:
+
+Relacione categories com products usando category_id.
+Relacione products com order_details usando product_id.
+3. Faturamento por fornecedor
+Calcule o faturamento total gerado por cada fornecedor.
+
+Tabelas: suppliers, products, order_details.
+Funções: SUM.
+Dica:
+
+Relacione suppliers com products usando supplier_id.
+Relacione products com order_details usando product_id.
+4. Pedidos por funcionário
+Liste os funcionários com o número total de pedidos processados e a média do valor total dos pedidos que eles gerenciaram.
+
+Tabelas: employees, orders, order_details.
+Funções: COUNT, AVG.
+Dica:
+
+Relacione employees com orders usando employee_id.
+Relacione orders com order_details para calcular o valor total de cada pedido.
+5. Faturamento mensal por ano
+Mostre o faturamento total para cada mês e ano.
+
+Tabelas: orders, order_details.
+Funções: SUM.
+Agrupamento: Ano e mês.
+Dica:
+
+Use EXTRACT(YEAR FROM ...) e EXTRACT(MONTH FROM ...) para obter ano e mês da coluna order_date em orders.
+6. Clientes que mais compraram
+Liste os 5 clientes que gastaram mais dinheiro em pedidos.
+
+Tabelas: customers, orders, order_details.
+Funções: SUM.
+Ordenação: Descendente com LIMIT.
+Dica:
+
+Relacione customers com orders e, em seguida, com order_details.
+Calcule o total gasto por cliente com SUM sobre unit_price * quantity.
+7. Categorias mais lucrativas
+Descubra quais categorias geraram mais receita total.
+
+Tabelas: categories, products, order_details.
+Funções: SUM.
+Agrupamento: Categoria.
+Dica:
+
+Relacione categories com products e depois com order_details.
+Calcule a receita com unit_price * quantity.
+8. Pedidos atrasados
+Liste os pedidos que foram entregues com atraso e o tempo médio de atraso (em dias) por funcionário.
+
+Tabelas: orders, employees.
+Funções: AVG.
+Dica:
+
+Use a diferença entre required_date e shipped_date para calcular o atraso.
+Relacione orders com employees para agrupar por funcionário.
+9. Clientes que compraram mais de X vezes
+Liste os clientes que realizaram mais de 5 pedidos.
+
+Tabelas: customers, orders.
+Funções: COUNT.
+Dica:
+
+Relacione customers com orders.
+Use HAVING para filtrar clientes com mais de 5 pedidos.
+10. Produtos nunca vendidos
+Encontre os produtos que nunca foram vendidos.
+
+Tabelas: products, order_details.
+Dica:
+
+Use um LEFT JOIN entre products e order_details e filtre onde order_details.product_id é NULL.
